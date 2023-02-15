@@ -1,0 +1,32 @@
+[
+  {
+    "model": "jammerplannerapi.user",
+    "pk": 7,
+    "fields": {
+      "name": "Robby",
+      "image_url": "https://picsum.photos/200",
+      "email": "oompaloompa@gmail.com",
+      "uid": "P43IPsThz0aTNuCXfNnENec5GQy1"
+    }
+  },
+  {
+    "model": "jammerplannerapi.user",
+    "pk": 8,
+    "fields": {
+      "name": "T Dog",
+      "image_url": "https://picsum.photos/200",
+      "email": "phantomfarmermusic@gmail.com",
+      "uid": "P43IPsThz0aTNuCXfNnENec5GQy2"
+    }
+  },
+  {
+    "model": "jammerplannerapi.user",
+    "pk": 9,
+    "fields": {
+      "name": "Byrd Man",
+      "image_url": "https://picsum.photos/200",
+      "email": "hazybaby@gmail.com",
+      "uid": "ZeQGxW6aM9fc4Y3y0cs4pp35qI83"
+    }
+  }
+]
