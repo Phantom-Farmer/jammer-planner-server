@@ -5,5 +5,5 @@ from .rehearsal import Rehearsal
 class Comment(models.Model):
 
     content = models.CharField(max_length=500)
-    rehearsal = models.ForeignKey(Rehearsal, on_delete=models.CASCADE)
+    rehearse = models.ForeignKey(Rehearsal, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)

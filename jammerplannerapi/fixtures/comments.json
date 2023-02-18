@@ -5,7 +5,7 @@
     "fields": {
       "content": "running late",
       "author": 7,
-      "rehearsal": 7
+      "rehearse": 7
     }
   },
   {
@@ -14,7 +14,7 @@
     "fields": {
       "content": "pizza is good",
       "author": 7,
-      "rehearsal": 7
+      "rehearse": 7
     }
   },
   {
@@ -23,7 +23,7 @@
     "fields": {
       "content": "excited to jam",
       "author": 7,
-      "rehearsal": 7
+      "rehearse": 7
     }
   }
 ]

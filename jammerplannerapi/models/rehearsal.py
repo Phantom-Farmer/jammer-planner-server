@@ -9,7 +9,7 @@ class Rehearsal(models.Model):
     time = models.CharField(max_length=20)
     location = models.CharField(max_length=200)
     show = models.CharField(max_length=500)
-    comment = models.CharField(max_length=500)
+    message = models.CharField(max_length=500)
     band = models.ForeignKey(Band, on_delete=models.CASCADE)
     set = models.ForeignKey(Set, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
