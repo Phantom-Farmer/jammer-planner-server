@@ -1,0 +1,35 @@
+[
+  {
+    "model": "jammerplannerapi.set",
+    "pk": 7,
+    "fields": {
+      "title": "set 1",
+      "song": "list 1",
+      "note": "all songs run together, no banter between",
+      "author": 7,
+      "band": 7
+    }
+  },
+  {
+    "model": "jammerplannerapi.set",
+    "pk": 8,
+    "fields": {
+      "title": "set 2",
+      "song": "list 2",
+      "note": "mellow versions",
+      "author": 7,
+      "band": 7
+    }
+  },
+  {
+    "model": "jammerplannerapi.set",
+    "pk": 9,
+    "fields": {
+      "title": "set 3",
+      "song": "list 3",
+      "note": "fast and heavy versions",
+      "author": 7,
+      "band": 7
+    }
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "model": "jammerplannerapi.comment",
+    "pk": 7,
+    "fields": {
+      "content": "running late",
+      "author": 7,
+      "rehearsal": 7
+    }
+  },
+  {
+    "model": "jammerplannerapi.comment",
+    "pk": 8,
+    "fields": {
+      "content": "pizza is good",
+      "author": 7,
+      "rehearsal": 7
+    }
+  },
+  {
+    "model": "jammerplannerapi.comment",
+    "pk": 9,
+    "fields": {
+      "content": "excited to jam",
+      "author": 7,
+      "rehearsal": 7
+    }
+  }
+]

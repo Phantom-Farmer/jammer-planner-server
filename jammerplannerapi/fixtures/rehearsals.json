@@ -1,0 +1,44 @@
+[
+  {
+    "model": "jammerplannerapi.rehearsal",
+    "pk": 7,
+    "fields": {
+      "date": "4/19/23",
+      "time": "4:19 pm",
+      "location": "jam room",
+      "show": "east room on May 19 with clown party",
+      "comment": "gonna have the new trumpet player sit in with us",
+      "author": 7,
+      "band": 7,
+      "set": 7
+    }
+  },
+  {
+    "model": "jammerplannerapi.rehearsal",
+    "pk": 8,
+    "fields": {
+      "date": "4/20/23",
+      "time": "4:20 pm",
+      "location": "Doug's house",
+      "show": "drk matter on May 20 with Chrome Pony",
+      "comment": "I will bring pizza",
+      "author": 7,
+      "band": 7,
+      "set": 7
+    }
+  },
+  {
+    "model": "jammerplannerapi.rehearsal",
+    "pk": 9,
+    "fields": {
+      "date": "4/21/23",
+      "time": "4:21 pm",
+      "location": "in the studio",
+      "show": "live on the green, opening for Wilco",
+      "comment": "focusing on transitions",
+      "author": 7,
+      "band": 7,
+      "set": 7
+    }
+  }
+]

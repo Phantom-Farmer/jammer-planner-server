@@ -1,0 +1,26 @@
+[
+  {
+    "model": "jammerplannerapi.set_song",
+    "pk": 7,
+    "fields": {
+      "set": 7,
+      "song": 7
+    }
+  },
+  {
+    "model": "jammerplannerapi.set_song",
+    "pk": 8,
+    "fields": {
+      "set": 7,
+      "song": 8
+    }
+  },
+  {
+    "model": "jammerplannerapi.set_song",
+    "pk": 9,
+    "fields": {
+      "set": 7,
+      "song": 9
+    }
+  }
+]
