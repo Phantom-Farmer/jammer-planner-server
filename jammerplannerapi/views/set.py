@@ -18,19 +18,24 @@ class SetView(ViewSet):
 
 
     def list(self, request):
-        """"Handle GET requests to handle all dream journals"""
         setlists = Set.objects.all()
-        author_id = request.query_params.get('author', None )
         band_id = request.query_params.get('band', None )
+        author_id = request.query_params.get('author', None )
+        if band_id is not None:
+            band = Band.objects.get(pk=band_id)
+            print('band_code_block')
+            band_sets = setlists.filter(band=band)
+            serializer = SetSerializer(band_sets, many=True)
+            return Response(serializer.data)
         if author_id is not None:
             author = User.objects.get(pk=author_id)
             print('author_code_block')
             auth_sets = setlists.filter(author=author)
             serializer = SetSerializer(auth_sets, many=True)
-        if band_id is not None:
-            band_set = setlists.filter(band_id=band_id)
-            serializer = SetSerializer(band_set, many=True)
-        return Response(serializer.data)
+            return Response(serializer.data)
+        else:
+            serializer = SetSerializer(setlists, many = True)
+            return Response(serializer.data)
         # sets = Set.objects.all()
         # band_id = request.query_params.get('band', None )
         # if band_id is not None:

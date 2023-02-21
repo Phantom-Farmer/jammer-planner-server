@@ -35,11 +35,11 @@ class SetSongView(ViewSet):
 
     def create(self, request):
         song = Song.objects.get(id=request.data["song_id"])
-        setlist = Set.objects.get(pk=request.data["set_id"])
+        set = Set.objects.get(pk=request.data["set_id"])
 
         set_song = Set_Song.objects.create(
         song=song,
-        setlist=setlist
+        set=set
         )
         serializer = SetSongSerializer(set_song)
         return Response(serializer.data)

@@ -17,19 +17,24 @@ class RehearsalView(ViewSet):
 
 
     def list(self, request):
-        """"Handle GET requests to handle all dream journals"""
         rehearsals = Rehearsal.objects.all()
-        author_id = request.query_params.get('author', None )
         band_id = request.query_params.get('band', None )
+        author_id = request.query_params.get('author', None )
+        if band_id is not None:
+            band = Band.objects.get(pk=band_id)
+            print('author_code_block')
+            band_rehearsals = rehearsals.filter(band=band)
+            serializer = RehearsalSerializer(band_rehearsals, many=True)
+            return Response(serializer.data)
         if author_id is not None:
             author = User.objects.get(pk=author_id)
             print('author_code_block')
             auth_rehearsals = rehearsals.filter(author=author)
             serializer = RehearsalSerializer(auth_rehearsals, many=True)
-        if band_id is not None:
-            band_rehearsal = rehearsals.filter(band_id=band_id)
-            serializer = RehearsalSerializer(band_rehearsal, many=True)
-        return Response(serializer.data)
+            return Response(serializer.data)
+        else:
+            serializer = RehearsalSerializer(rehearsals, many = True)
+            return Response(serializer.data)
         # bands = Band.objects.all()
         # band_id = request.query_params.get('band', None )
         # if band_id is not None:
@@ -44,7 +49,7 @@ class RehearsalView(ViewSet):
         """
         author = User.objects.get(pk=request.data['author'])
         band = Band.objects.get(pk=request.data['band'])
-        setlist = Set.objects.get(pk=request.data['setlist'])
+        set = Set.objects.get(pk=request.data['set'])
 
         rehearsal = Rehearsal.objects.create(
             date=request.data["date"],
@@ -54,7 +59,7 @@ class RehearsalView(ViewSet):
             message=request.data["message"],
             author=author,
             band=band,
-            setlist=setlist
+            set=set
 
         )
         serializer = RehearsalSerializer(rehearsal)
@@ -70,7 +75,7 @@ class RehearsalView(ViewSet):
 
         author = User.objects.get(pk=request.data["author"])
         band = Band.objects.get(pk=request.data["band"])
-        setlist = Set.objects.get(pk=request.data['setlist'])
+        set = Set.objects.get(pk=request.data['set'])
 
         rehearsal.date=request.data["date"]
         rehearsal.time=request.data["time"]
@@ -79,7 +84,7 @@ class RehearsalView(ViewSet):
         rehearsal.message=request.data["message"]
         rehearsal.author=author
         rehearsal.band=band
-        rehearsal.setlist=setlist
+        rehearsal.set=set
         rehearsal.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)

@@ -17,25 +17,24 @@ class SongView(ViewSet):
 
 
     def list(self, request):
-        """"Handle GET requests to handle all dream journals"""
         songs = Song.objects.all()
-        author_id = request.query_params.get('author', None )
         band_id = request.query_params.get('band', None )
+        author_id = request.query_params.get('author', None )
+        if band_id is not None:
+            band = Band.objects.get(pk=band_id)
+            print('author_code_block')
+            band_songs = songs.filter(band=band)
+            serializer = SongSerializer(band_songs, many=True)
+            return Response(serializer.data)
         if author_id is not None:
             author = User.objects.get(pk=author_id)
             print('author_code_block')
             auth_songs = songs.filter(author=author)
             serializer = SongSerializer(auth_songs, many=True)
-        if band_id is not None:
-            band_song = songs.filter(band_id=band_id)
-            serializer = SongSerializer(band_song, many=True)
-        return Response(serializer.data)
-        # bands = Band.objects.all()
-        # band_id = request.query_params.get('band', None )
-        # if band_id is not None:
-        #     band_song = songs.filter(band_id=band_id)
-        # serializer = SongSerializer(band_song, many=True)
-        # return Response(serializer.data)
+            return Response(serializer.data)
+        else:
+            serializer = SongSerializer(songs, many = True)
+            return Response(serializer.data)
 
     def create(self, request):
         """Handle POST operations
@@ -91,4 +90,4 @@ class SongSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song
         fields = ('id', 'title', 'key', 'signature', 'vibe', 'lyric', 'author', 'band')
-        depth = 1
+        depth = 2

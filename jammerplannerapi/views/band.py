@@ -13,15 +13,17 @@ class BandView(ViewSet):
         return Response(serializer.data)
 
     def list(self, request):
-
         bands = Band.objects.all()
-        user=User.objects.all()
-        uid_query = request.query_params.get('uid', None)
-        if uid_query is not None:
-            user=User.objects.get(uid=uid_query)
-            bands = bands.filter(author=user)
-        serializer = BandSerializer(bands, many = True)
-        return Response(serializer.data)
+        author_id = request.query_params.get('author', None )
+        if author_id is not None:
+            author = User.objects.get(pk=author_id)
+            print('author_code_block')
+            auth_bands = bands.filter(author=author)
+            serializer = BandSerializer(auth_bands, many=True)
+            return Response(serializer.data)
+        else:
+            serializer = BandSerializer(bands, many = True)
+            return Response(serializer.data)
 
     def create(self, request):
 
