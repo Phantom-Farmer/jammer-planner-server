@@ -20,6 +20,8 @@ def check_user(request):
             'id': user.id,
             'name': user.name,
             'uid': user.uid,
+            'email': user.email,
+            'image_url': user.image_url,
         }
         return Response(data)
     except:
@@ -38,6 +40,8 @@ def register_user(request):
     user = User.objects.create(
         name=request.data['name'],
         uid=request.data['uid'],
+        image_url=request.data['image_url'],
+        email=request.data['email'],
     )
 
     # Return the user info to the client
@@ -45,5 +49,7 @@ def register_user(request):
             'id': user.id,
             'name': user.name,
             'uid': user.uid,
+            'image_url': user.image_url,
+            'email': user.email,
     }
     return Response(data)
