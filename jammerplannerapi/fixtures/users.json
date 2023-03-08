@@ -1,7 +1,7 @@
 [
   {
     "model": "jammerplannerapi.user",
-    "pk": 7,
+    "pk": 1,
     "fields": {
       "name": "Robby",
       "image_url": "https://picsum.photos/200",
@@ -11,7 +11,7 @@
   },
   {
     "model": "jammerplannerapi.user",
-    "pk": 8,
+    "pk": 2,
     "fields": {
       "name": "T Dog",
       "image_url": "https://picsum.photos/200",
@@ -21,7 +21,7 @@
   },
   {
     "model": "jammerplannerapi.user",
-    "pk": 9,
+    "pk": 3,
     "fields": {
       "name": "Byrd Man",
       "image_url": "https://picsum.photos/200",

@@ -53,7 +53,6 @@ class SetView(ViewSet):
 
         setlist = Set.objects.create(
             title=request.data["title"],
-            song=request.data["song"],
             note=request.data["note"],
             author=author,
             band=band
@@ -74,7 +73,6 @@ class SetView(ViewSet):
         band = Band.objects.get(pk=request.data["band"])
 
         setlist.title=request.data["title"]
-        setlist.song=request.data["song"]
         setlist.note=request.data["note"]
         setlist.author=author
         setlist.band=band
@@ -92,5 +90,5 @@ class SetSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Set
-        fields = ('id', 'title', 'song', 'note', 'author', 'band')
+        fields = ('id', 'title', 'note', 'author', 'band')
         depth = 1

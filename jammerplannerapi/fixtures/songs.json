@@ -1,41 +1,41 @@
 [
   {
     "model": "jammerplannerapi.song",
-    "pk": 7,
+    "pk": 1,
     "fields": {
       "title": "lola",
       "key": "C",
       "signature": "4/4",
       "vibe": "bouncy pop",
       "lyric": "woke up on the bright side, lola sleeping with rapid eyes",
-      "author": 7,
-      "band": 7
+      "author": 1,
+      "band": 1
     }
   },
   {
     "model": "jammerplannerapi.song",
-    "pk": 8,
+    "pk": 2,
     "fields": {
       "title": "hotel room",
       "key": "A",
       "signature": "4/4",
       "vibe": "rock n roll",
       "lyric": "after party gonna go down, all the walls are gonna blow down",
-      "author": 7,
-      "band": 7
+      "author": 1,
+      "band": 1
     }
   },
   {
     "model": "jammerplannerapi.song",
-    "pk": 9,
+    "pk": 3,
     "fields": {
       "title": "slow jam",
       "key": "G",
       "signature": "6/8",
       "vibe": "loungy blues",
       "lyric": "instrumental",
-      "author": 7,
-      "band": 7
+      "author": 1,
+      "band": 1
     }
   }
 ]

@@ -1,26 +1,33 @@
 [
   {
     "model": "jammerplannerapi.set_song",
-    "pk": 7,
+    "pk": 1,
     "fields": {
-      "set": 7,
-      "song": 7
+      "set": 1,
+      "song": 1,
+      "order": 1,
+      "band": 1
+      
     }
   },
   {
     "model": "jammerplannerapi.set_song",
-    "pk": 8,
+    "pk": 2,
     "fields": {
-      "set": 7,
-      "song": 8
+      "set": 1,
+      "song": 2,
+      "order": 2,
+      "band": 1
     }
   },
   {
     "model": "jammerplannerapi.set_song",
-    "pk": 9,
+    "pk": 3,
     "fields": {
-      "set": 7,
-      "song": 9
+      "set": 1,
+      "song": 3,
+      "order": 3,
+      "band": 1
     }
   }
 ]

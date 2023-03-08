@@ -2,7 +2,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from jammerplannerapi.models import Set_Song, Song, Set
+from jammerplannerapi.models import Set_Song, Song, Set, Band
 from jammerplannerapi.views import SongSerializer
 
 
@@ -24,9 +24,16 @@ class SetSongView(ViewSet):
             return set_songs
 
         set_id = request.query_params.get('set', None)
+        band_id = request.query_params.get('band', None )
         if set_id is not None:
             set_songs = get_songs_for_set(set_id)
             serializer = SetSongSerializer(set_songs, many=True)
+            return Response(serializer.data)
+        if band_id is not None:
+            band = Band.objects.get(pk=band_id)
+            print('author_code_block')
+            band_set_songs = set_songs.filter(band=band)
+            serializer = SetSongSerializer(band_set_songs, many=True)
             return Response(serializer.data)
         else:
             set_songs = Set_Song.objects.all()
@@ -36,10 +43,13 @@ class SetSongView(ViewSet):
     def create(self, request):
         song = Song.objects.get(id=request.data["song_id"])
         set = Set.objects.get(pk=request.data["set_id"])
+        band= Band.objects.get(pk=request.data['band_id'])
 
         set_song = Set_Song.objects.create(
         song=song,
-        set=set
+        set=set,
+        band=band,
+        order = request.data["order"],
         )
         serializer = SetSongSerializer(set_song)
         return Response(serializer.data)
@@ -59,6 +69,7 @@ class SetSongSerializer(serializers.ModelSerializer):
     set_id = serializers.ReadOnlyField(source='set.id')
     song_title = serializers.ReadOnlyField(source='song.title')
     song_id = serializers.ReadOnlyField(source='song.id')
+    band_id = serializers.ReadOnlyField(source='band.id')
     class Meta:
         model = Set_Song
-        fields = ('id', 'set_id', 'song_title', 'song_id')
+        fields = ('id', 'set_id', 'song_title', 'song_id', 'band_id', 'order')

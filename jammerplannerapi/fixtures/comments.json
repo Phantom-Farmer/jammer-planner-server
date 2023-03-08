@@ -1,29 +1,29 @@
 [
   {
     "model": "jammerplannerapi.comment",
-    "pk": 7,
+    "pk": 1,
     "fields": {
       "content": "running late",
-      "author": 7,
-      "rehearse": 7
+      "author": 1,
+      "rehearse": 1
     }
   },
   {
     "model": "jammerplannerapi.comment",
-    "pk": 8,
+    "pk": 2,
     "fields": {
       "content": "pizza is good",
-      "author": 7,
-      "rehearse": 7
+      "author": 1,
+      "rehearse": 1
     }
   },
   {
     "model": "jammerplannerapi.comment",
-    "pk": 9,
+    "pk": 3,
     "fields": {
       "content": "excited to jam",
-      "author": 7,
-      "rehearse": 7
+      "author": 1,
+      "rehearse": 1
     }
   }
 ]

@@ -1,26 +1,26 @@
 [
   {
     "model": "jammerplannerapi.band",
-    "pk": 7,
+    "pk": 1,
     "fields": {
       "name": "harmonium",
-      "author": 7
+      "author": 1
     }
   },
   {
     "model": "jammerplannerapi.band",
-    "pk": 8,
+    "pk": 2,
     "fields": {
       "name": "Chrome Pony",
-      "author": 8
+      "author": 2
     }
   },
   {
     "model": "jammerplannerapi.band",
-    "pk": 9,
+    "pk": 3,
     "fields": {
       "name": "Peachy",
-      "author": 9
+      "author": 3
     }
   }
 ]
