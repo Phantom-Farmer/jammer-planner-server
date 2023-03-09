@@ -2,7 +2,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from jammerplannerapi.models import Set, User, Band
+from jammerplannerapi.models import Set, User, Band, Set_Song, Song
 
 class SetView(ViewSet):
 
@@ -50,14 +50,21 @@ class SetView(ViewSet):
         """
         author = User.objects.get(pk=request.data['author'])
         band= Band.objects.get(pk=request.data['band'])
+        songs = request.data['songs']
+        
+        pruned_song_ids = [id for id in songs if id is not None]
 
         setlist = Set.objects.create(
             title=request.data["title"],
             note=request.data["note"],
             author=author,
             band=band
-
         )
+        
+        for (order, song_id) in enumerate(pruned_song_ids):
+            set_song = Set_Song(set=setlist, song=Song.objects.get(pk=song_id), order=order)
+            set_song.save()
+            
         serializer = SetSerializer(setlist)
         return Response(serializer.data)
 

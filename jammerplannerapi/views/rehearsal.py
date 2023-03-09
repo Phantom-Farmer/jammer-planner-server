@@ -75,16 +75,16 @@ class RehearsalView(ViewSet):
 
         author = User.objects.get(pk=request.data["author"])
         band = Band.objects.get(pk=request.data["band"])
-        set = Set.objects.get(pk=request.data['set'])
+        set = Set.objects.get(pk=request.data["set"])
 
+        rehearsal.author=author
+        rehearsal.band=band
+        rehearsal.set=set
         rehearsal.date=request.data["date"]
         rehearsal.time=request.data["time"]
         rehearsal.location=request.data["location"]
         rehearsal.show=request.data["show"]
         rehearsal.message=request.data["message"]
-        rehearsal.author=author
-        rehearsal.band=band
-        rehearsal.set=set
         rehearsal.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
@@ -95,7 +95,7 @@ class RehearsalView(ViewSet):
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 class RehearsalSerializer(serializers.ModelSerializer):
-    """JSON serializer for songs
+    """JSON serializer for rehearsals
     """
     class Meta:
         model = Rehearsal
