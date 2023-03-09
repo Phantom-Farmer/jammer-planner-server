@@ -8,4 +8,3 @@ class Set_Song(models.Model):
     set = models.ForeignKey(Set, on_delete=models.CASCADE)
     song = models.ForeignKey(Song, on_delete=models.CASCADE)
     order = models.CharField(max_length=50)
-    band = models.ForeignKey(Band, on_delete=models.CASCADE)

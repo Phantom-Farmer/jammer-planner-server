@@ -29,12 +29,6 @@ class SetSongView(ViewSet):
             set_songs = get_songs_for_set(set_id)
             serializer = SetSongSerializer(set_songs, many=True)
             return Response(serializer.data)
-        if band_id is not None:
-            band = Band.objects.get(pk=band_id)
-            print('author_code_block')
-            band_set_songs = set_songs.filter(band=band)
-            serializer = SetSongSerializer(band_set_songs, many=True)
-            return Response(serializer.data)
         else:
             set_songs = Set_Song.objects.all()
             serializer = SetSongSerializer(set_songs, many=True)
@@ -43,12 +37,10 @@ class SetSongView(ViewSet):
     def create(self, request):
         song = Song.objects.get(id=request.data["song_id"])
         set = Set.objects.get(pk=request.data["set_id"])
-        band= Band.objects.get(pk=request.data['band_id'])
 
         set_song = Set_Song.objects.create(
         song=song,
         set=set,
-        band=band,
         order = request.data["order"],
         )
         serializer = SetSongSerializer(set_song)
@@ -69,7 +61,6 @@ class SetSongSerializer(serializers.ModelSerializer):
     set_id = serializers.ReadOnlyField(source='set.id')
     song_title = serializers.ReadOnlyField(source='song.title')
     song_id = serializers.ReadOnlyField(source='song.id')
-    band_id = serializers.ReadOnlyField(source='band.id')
     class Meta:
         model = Set_Song
-        fields = ('id', 'set_id', 'song_title', 'song_id', 'band_id', 'order')
+        fields = ('id', 'set_id', 'song_title', 'song_id', 'order')
