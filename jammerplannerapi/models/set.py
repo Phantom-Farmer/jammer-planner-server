@@ -8,3 +8,8 @@ class Set(models.Model):
     note = models.CharField(max_length=1000)
     band = models.ForeignKey(Band, on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    @property
+    def songs(self):
+        set_songs = self.set_songs.all()
+        return [set_song.song for set_song in set_songs]

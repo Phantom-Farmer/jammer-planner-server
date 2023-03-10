@@ -61,6 +61,8 @@ class SetView(ViewSet):
             band=band
         )
         
+        
+        
         for (order, song_id) in enumerate(pruned_song_ids):
             set_song = Set_Song(set=setlist, song=Song.objects.get(pk=song_id), order=order)
             set_song.save()
@@ -92,10 +94,16 @@ class SetView(ViewSet):
         setlist.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
+class SongSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Song
+        fields = ('title',)
+
 class SetSerializer(serializers.ModelSerializer):
     """JSON serializer for Sets
     """
+    songs = SongSerializer(many=True)
     class Meta:
         model = Set
-        fields = ('id', 'title', 'note', 'author', 'band')
+        fields = ('id', 'title', 'note', 'author', 'band', 'songs',)
         depth = 1

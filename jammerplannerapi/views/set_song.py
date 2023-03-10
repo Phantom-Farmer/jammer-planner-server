@@ -3,7 +3,6 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from jammerplannerapi.models import Set_Song, Song, Set, Band
-from jammerplannerapi.views import SongSerializer
 
 
 class SetSongView(ViewSet):
@@ -57,10 +56,12 @@ class SetSongView(ViewSet):
         set_song.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
+
+
 class SetSongSerializer(serializers.ModelSerializer):
     set_id = serializers.ReadOnlyField(source='set.id')
     song_title = serializers.ReadOnlyField(source='song.title')
     song_id = serializers.ReadOnlyField(source='song.id')
     class Meta:
         model = Set_Song
-        fields = ('id', 'set_id', 'song_title', 'song_id', 'order')
+        fields = ('id', 'set_id', 'song_title', 'song_id', 'order',)
