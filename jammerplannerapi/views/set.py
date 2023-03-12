@@ -1,4 +1,3 @@
-from tkinter import NONE
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
@@ -93,7 +92,7 @@ class SetView(ViewSet):
         
         songs = request.data['songs']
         
-        pruned_song_ids = [id for id in songs if id is not NONE]
+        pruned_song_ids = [id for id in songs if id is not None]
         
         for (order, song_id) in enumerate(pruned_song_ids):
             set_song = Set_Song(set=setlist, song=Song.objects.get(pk=song_id), order=order)
