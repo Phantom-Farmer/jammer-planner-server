@@ -1,3 +1,4 @@
+from tkinter import NONE
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
@@ -86,6 +87,17 @@ class SetView(ViewSet):
         setlist.author=author
         setlist.band=band
         setlist.save()
+        
+        existing_set_songs = Set_Song.objects.filter(set=setlist)
+        existing_set_songs.delete()
+        
+        songs = request.data['songs']
+        
+        pruned_song_ids = [id for id in songs if id is not NONE]
+        
+        for (order, song_id) in enumerate(pruned_song_ids):
+            set_song = Set_Song(set=setlist, song=Song.objects.get(pk=song_id), order=order)
+            set_song.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
@@ -97,7 +109,7 @@ class SetView(ViewSet):
 class SongSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song
-        fields = ('title',)
+        fields = ('title', 'id',)
 
 class SetSerializer(serializers.ModelSerializer):
     """JSON serializer for Sets
