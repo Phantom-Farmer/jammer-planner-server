@@ -61,7 +61,7 @@ class SetView(ViewSet):
             band=band
         )
         
-        
+        #import pdb; pdb.set_trace()
         
         for (order, song_id) in enumerate(pruned_song_ids):
             set_song = Set_Song(set=setlist, song=Song.objects.get(pk=song_id), order=order)
